@@ -1,0 +1,35 @@
+ .headerButtons {
+     display: flex;
+     justify-content: center;
+     background: grey;
+     height: 150px;
+     align-items: center;
+ }
+ 
+ .content {
+     display: block;
+     height: 500px;
+ }
+ 
+ #colorsText,
+ #colorsBg {
+     display: none;
+     height: 100px;
+     width: 100px;
+     margin: 0 auto;
+     flex-wrap: wrap;
+ }
+ 
+ .box {
+     height: 33.33%;
+     width: 33.33%;
+ }
+ 
+ #editText {
+     display: none;
+ }
+ 
+ .box4,
+ .box5 {
+     display: none;
+ }
