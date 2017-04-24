@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+        .headerButtons {
+            display: flex;
+            justify-content: center;
+            background: grey;
+            height: 150px;
+            align-items: center;
+        }
+        
+        .content {
+            display: block;
+            height: 500px;
+        }
+        
+        #colorsText,
+        #colorsBg {
+            display: none;
+            height: 100px;
+            width: 100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .box {
+            height: 33.33%;
+            width: 33.33%;
+        }
+        
+        #editText {
+            display: none;
+        }
+        
+        .box4, .box5{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+       
+        <div class="header">
+            <div class="headerButtons">
+                <input type="button" value="Edit" id="btnEdit" onclick="btnEdit()">
+                <input type="button" value="B" onclick="boldText()">
+                <input type="button" value="/" onclick="italicText()">
+                <input type="button" value="Underline" onclick="underlineText()">
+                <input type="button" value="Save" onclick="saveText()">
+                <input type="button" value="Create table" onclick="createTable()">
+                <input type="button" value="Create list" onclick="createList()">
+
+                <select id="changeSize" onchange="changeSize()">
+                    <option value="7">7pt</option>
+                    <option value="8">8pt</option>
+                    <option value="9">9pt</option>
+                    <option value="10">10pt</option>
+                    <option value="20">20pt</option>
+                    <option value="30">30pt</option>
+                    <option value="40">40pt</option>
+                </select>
+
+                <select id="changeFont" onchange="changeFont()">
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Verdana">Verdana</option>
+                </select>
+
+                <input type="button" value="Колір тексту" onclick="textColor()">
+
+                <input type="button" value="Колір фону" onclick="fontColor()">
+
+                <input type="radio" name="textAlign" id="1" onchange="changeAlign('left')">
+                <label for="1">left</label>
+                <input type="radio" id="2" name="textAlign" onchange="changeAlign('center')">
+                <label for="2">center</label>
+                <input type="radio" id="3" name="textAlign" onchange="changeAlign('right')">
+                <label for="3">right</label>
+            </div>
+            
+            <div id="colorsText">
+                <div class="box" style="background: red"></div>
+                <div class="box" style="background: blue"></div>
+                <div class="box" style="background: green"></div>
+                <div class="box" style="background: yellow"></div>
+                <div class="box" style="background: white"></div>
+                <div class="box" style="background: brown"></div>
+                <div class="box" style="background: pink"></div>
+                <div class="box" style="background: purple"></div>
+                <div class="box" style="background: grey"></div>
+            </div>
+
+            <div id="colorsBg">
+                <div class="box" style="background: red"></div>
+                <div class="box" style="background: blue"></div>
+                <div class="box" style="background: grey"></div>
+                <div class="box" style="background: yellow"></div>
+                <div class="box" style="background: brown"></div>
+                <div class="box" style="background: pink"></div>
+                <div class="box" style="background: purple"></div>
+                <div class="box" style="background: white"></div>
+                <div class="box" style="background: green"></div>
+            </div>
+        </div>
+        
+        <div class="content" id="content">
+            <p>Якийсь там текст, в якому щось там пише</p>
+            <p>Якийсь там текст, в якому щось там пише</p>
+            <p>Якийсь там текст, в якому щось там пише</p>
+            <p>Якийсь там текст, в якому щось там пише</p>
+            <p>Якийсь там текст, в якому щось там пише</p>
+        </div>
+
+        <textarea id="editText" style="width:99%; height: 500px"></textarea>
+        
+        <div id="selectPanel">
+        <h1>Виберіть що саме ви хочете додати:</h1>
+            <label for="selectTable">Таблицю</label>
+            <input type="radio" id="selectTable" name="selectTableRow" onchange="selectedTable()">
+            <label for="selectRow">Список</label>
+            <input type="radio" id="selectRow" name="selectTableRow" onchange="selectedList()">
+        </div> 
+        
+        <div class="box4" id="box4">
+            <label>Введіть кількість рядків таблиці:</label>
+            <input type="text" id="tableRow">
+            <br>
+            <br>
+            <label>Введіть кількість стовпців таблиці:</label>
+            <input type="text" id="tableCol">
+            <br>
+            <h2>Стилізуйте таблицю:</h2>
+            <label>Введіть ширину комірки таблиці:</label>
+            <input type="text" id="tableWidth">
+            <br>
+            <br>
+            <label>Введіть висоту комірки таблиці:</label>
+            <input type="text" id="tableHeight">
+            <br>
+            <br>
+            <label>Cellspacing:</label>
+            <input type="text" id="cellSpacing">
+            <br>
+            <br>
+            <label>Товщина:</label>
+            <input type="text" id="tableBorderThickness">
+            <label>Тип лінії:</label>
+            <select id="lineType">
+                <option value="solid">solid</option>
+                <option value="dotted">dotted</option>
+                <option value="dashed">dashed</option>
+                <option value="double">double</option>
+            </select>
+            <label>Колір лінії:</label>
+            <select id="lineColor">
+                <option value="black">black</option>
+                <option value="red">red</option>
+                <option value="blue">blue</option>
+                <option value="yellow">yellow</option>
+            </select>
+        </div>
+        <br>
+<div class="box5" id="box5">
+    <label>Тип списку:</label>
+    <label for="listOl"> ol</label>
+    <input type="radio" name="listStyle" id="listOl">
+    <label for="listUl"> ul</label>
+    <input type="radio" name="listStyle" id="listUl">
+    <br>
+    <br>
+    <label>Введіть кількість елементів списку:</label>
+    <input type="text" id="elementQuantity">
+    <br>
+    <label>Тип маркера:</label>
+    <select id="markerType">
+        <option value="lower-latin">a</option>
+        <option value="upper-latin">A</option>
+        <option value="lower-roman">i</option>
+        <option value="upper-roman">I</option>
+    </select>
+</div>
+   
+    </div>
+
+    <script src="js/main2.js"></script>
+</body>
+
+</html>
